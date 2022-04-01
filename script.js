@@ -20,7 +20,7 @@ function generatePassword() {
   var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
   var special = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "=", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
   var charactersIncluded = [];
-  var allCharacters = [lowerCase, upperCase, numbers, special];
+  var allCharacters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "=", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~"];
 
 
   var characterLength = prompt("How many characters will your password be?");
@@ -48,20 +48,32 @@ function generatePassword() {
     characterLength.prompt();
   }
   else if (confirmLowercase == true && confirmUppercase == false && confirmNumbers == false && confirmSpecial == false) {
-    charactersIncluded = lowerCase;
+    charactersIncluded = [lowerCase];
   }
   else if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == false && confirmSpecial == false) {
-    charactersIncluded = lowerCase + upperCase;
+    charactersIncluded = [lowerCase + upperCase];
   }
   else if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == true && confirmSpecial == false) {
-    charactersIncluded = lowerCase + upperCase + numbers;
+    charactersIncluded = [lowerCase + upperCase + numbers];
   }
   else if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == true && confirmSpecial == true) {
-    charactersIncluded = allCharacters;
+    charactersIncluded = [allCharacters];
   }
-  
 
-  Math.floor(Math.random()*characterLength.length)
+
+  if (charactersIncluded) {
+    var random;
+    var newPassword = [];
+    for (let i = 0; i < characterLength; i++) {
+     newPassword = Math.floor(Math.random() * characterLength.length);
+     newPassword += charactersIncluded[random];
+     console.log(random);
+     console.log(newPassword);
+    }
+    console.log(newPassword);
+  }
+  return newPassword;
+
 
   
 }
